@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour {
     //Enemy Health
     //int health = 0;
     public GameObject player;
+    public Camera camera;
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,30 +22,43 @@ public class EnemyMovement : MonoBehaviour {
         {
             //Must face the player, and will shoot at a specific time
             Vector3 newPos;
+
+            //Right of Player
             if (player.transform.position.x < transform.position.x)
             {
-                Debug.Log("Right of player");
                 newPos = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
                 transform.position = newPos;
             }
+
+            //Left of Player
             else if (player.transform.position.x > transform.position.x)
             {
-                Debug.Log("Left of player");
                 newPos = new Vector3(transform.position.x + 0.01f, transform.position.y, transform.position.z);
                 transform.position = newPos;
             }
+
+            //Above Player
             if (player.transform.position.y < transform.position.y)
             {
-                Debug.Log("Above Player");
                 newPos = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
                 transform.position = newPos;
             }
+
+            //Below Player
             else if (player.transform.position.y > transform.position.y)
             {
-                Debug.Log("Below Player");
                 newPos = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
                 transform.position = newPos;
             }
+
+            //Shoots a ballastic object at player
+            FollowTarget(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
         }
+    }
+
+    void FollowTarget(Vector3 targetPos)
+    {
+        Vector3 targetPosition = new Vector3(targetPos.x, targetPos.y, targetPos.z);
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((targetPosition.y - transform.position.y), (targetPosition.x - transform.position.x)) * Mathf.Rad2Deg);
     }
 }
