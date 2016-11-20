@@ -56,6 +56,8 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
+
+    //Makes the enemy to face player
     void FollowTarget(Vector3 targetPos)
     {
         Vector3 targetPosition = new Vector3(targetPos.x, targetPos.y, targetPos.z);
