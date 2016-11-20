@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
+    public Camera camera;
+
 	// Use this for initialization
 	void Start () {
 	    
@@ -63,4 +65,4 @@ public class Movement : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x)) * Mathf.Rad2Deg);
     }
 }
-}
+
