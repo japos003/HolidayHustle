@@ -2,17 +2,11 @@
 using System.Collections;
 
 public class Movement : MonoBehaviour {
-
-    float speed = 6.0f;
-    float cameraDistance = 10f;
-    Vector3 moveDirection = Vector3.zero;
     public Camera camera;
+    private float speed = 0.1f;
 
-    public Transform target;
-
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	    
 	}
 	
@@ -20,34 +14,34 @@ public class Movement : MonoBehaviour {
 	void Update () {
         // Movement
         
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             Vector3 newPos = new Vector3(
                 transform.position.x,
-                transform.position.y + 1,
+                transform.position.y + speed,
                 transform.position.z);
             transform.position = newPos;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             Vector3 newPos = new Vector3(
                 transform.position.x,
-                transform.position.y - 1,
+                transform.position.y - speed,
                 transform.position.z);
             transform.position = newPos;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             Vector3 newPos = new Vector3(
-                transform.position.x - 1,
+                transform.position.x - speed,
                 transform.position.y,
                 transform.position.z);
             transform.position = newPos;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             Vector3 newPos = new Vector3(
-                transform.position.x + 1, 
+                transform.position.x + speed, 
                 transform.position.y, 
                 transform.position.z);
             transform.position = newPos;
