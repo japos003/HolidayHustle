@@ -4,9 +4,10 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
     public Camera camera;
+    public GameObject projectile;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	    
 	}
 	
@@ -51,8 +52,17 @@ public class Movement : MonoBehaviour {
 
 
         // Shoot
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        {
             print("SHOOT");
+            //GameObject bullet = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+
+            Debug.Log("Player Position - x: " + transform.position.x + " y: " + transform.position.y + " z: " + transform.position.z);
+            GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+            bullet.GetComponent<ProjectileMovement>().targetPosition = this.transform;
+
+        }
+
 
         // Rotate
         FollowMouse(Input.mousePosition);

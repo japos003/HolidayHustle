@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour {
     //int health = 0;
     public GameObject player;
     public Camera camera;
+    public GameObject prefab;
 
 
 	// Use this for initialization
@@ -17,9 +18,13 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Moving object");
+        //Debug.Log("Moving object");
         if(player)
         {
+            //GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
+            //bullet.GetComponent<ProjectileMovement>().targetPosition = player.transform;
+
+
             //Must face the player, and will shoot at a specific time
             Vector3 newPos;
 
@@ -56,8 +61,6 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
-
-    //Makes the enemy to face player
     void FollowTarget(Vector3 targetPos)
     {
         Vector3 targetPosition = new Vector3(targetPos.x, targetPos.y, targetPos.z);
